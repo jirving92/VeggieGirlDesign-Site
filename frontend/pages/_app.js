@@ -3,13 +3,13 @@ import Head from "next/head";
 import '../styles/globals.css'
 import { ApolloProvider } from "@apollo/react-hooks";
 import withData from "../utils/apollo";
-import Nav from '../components/nav';
+import Nav from '../components/nav/nav';
 
 const App = ({ Component, pageProps, apollo }) => {
   return (
     <ApolloProvider client={apollo}>
       <Head>
-        <title>Strapi blog</title>
+        <title>Veggie Girl Design</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link
           rel="stylesheet"
@@ -24,6 +24,7 @@ const App = ({ Component, pageProps, apollo }) => {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js" />
       </Head>
       <Nav/>
+
       <Component {...pageProps} />
     </ApolloProvider>
   )
