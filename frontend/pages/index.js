@@ -1,24 +1,26 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
-import Articles from '../components/articles';
 import Query from '../components/query';
-import ARTICLES_QUERY from "../queries/article/articles";
+import HOME_QUERY from '../queries/home/home';
+import Logo from '../components/logo/logo';
+import Menu from '../components/menu/menu';
 
 const Home = () => {
   return (
     <div>
-      <div className="uk-section">
-        <div className="uk-container uk-container-large">
-          <h1>Strapi blog</h1>
-          <Query query={ARTICLES_QUERY}>
-            {({ data: { articles } }) => {
-              return <Articles articles={articles} />;
-            }}
-          </Query>
-        </div>
-      </div>
-    </div>
+      <Query query={HOME_QUERY}>
+      {({ data: { home } }) => {
+        const imageUrl =
+        process.env.NODE_ENV !== "development"
+          ? home.logo.url
+          : process.env.REACT_APP_BACKEND_URL + home.logo.url;
+        return (
+          <div>
+            <Logo url={imageUrl}></Logo>
+            <Menu/>
+          </div>
+        );
+      }}
+      </Query>
+    </div> 
   );
 };
 
