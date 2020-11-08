@@ -50,6 +50,10 @@ padding: 20px 0;
 text-decoration: none;
 display: inline-block;
 text-align: center;
+&:hover {
+    color: #333;
+    text-decoration: none;
+}
 `;
 export default function Menu() {
     return (
